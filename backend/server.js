@@ -13,6 +13,10 @@ app.use(BodyParser.json());
 
 app.use('/api', router);
 
+app.get('/', (req, res) => {
+    res.sendFile(`${FRONTEND_PATH}/index.html`);
+});
+
 app.listen(3000, () => {
     console.log(`Server listening on port ${PORT}!`);
 });
