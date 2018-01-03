@@ -1,0 +1,19 @@
+{
+  "name": "pleitegeier",
+  "version": "0.1.0",
+  "description": "Die Webapp, welche im Rahmen meiner Seminararbeit \"JavaScript im Backend-Einsatz: Vom Frontend ins Node.js-Backend\" zur Erläuterung eingesetzt wurde.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loehnertz/pleitegeier.git"
+  },
+  "author": "Jakob Löhnertz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loehnertz/pleitegeier/issues"
+  },
+  "homepage": "https://github.com/loehnertz/pleitegeier#readme"
+}
