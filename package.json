@@ -2,8 +2,10 @@
   "name": "pleitegeier",
   "version": "0.1.0",
   "description": "Die Webapp, welche im Rahmen meiner Seminararbeit \"JavaScript im Backend-Einsatz: Vom Frontend ins Node.js-Backend\" zur Erläuterung eingesetzt wurde.",
-  "main": "index.js",
+  "main": "backend/server.js",
   "scripts": {
+    "start": "node backend/server.js",
+    "debug": "node --inspect backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/loehnertz/pleitegeier/issues"
   },
-  "homepage": "https://github.com/loehnertz/pleitegeier#readme"
+  "homepage": "https://github.com/loehnertz/pleitegeier#readme",
+  "dependencies": {}
 }
