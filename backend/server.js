@@ -11,6 +11,8 @@ const FRONTEND_PATH = 'frontend';
 app.use(BodyParser.urlencoded({extended: true}));
 app.use(BodyParser.json());
 
+app.use(Express.static(FRONTEND_PATH));
+
 app.use('/api', router);
 
 app.get('/', (req, res) => {
