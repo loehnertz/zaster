@@ -1,5 +1,5 @@
 {
-  "name": "pleitegeier",
+  "name": "zaster",
   "version": "0.1.0",
   "description": "Die Webapp, welche im Rahmen meiner Seminararbeit \"JavaScript im Backend-Einsatz: Vom Frontend ins Node.js-Backend\" zur Erläuterung eingesetzt wurde.",
   "main": "backend/server.js",
