@@ -18,5 +18,7 @@
     "url": "https://github.com/loehnertz/pleitegeier/issues"
   },
   "homepage": "https://github.com/loehnertz/pleitegeier#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
