@@ -60,14 +60,17 @@
         </section>
         <section id="list" class="box">
             <div v-for="entry in entries" class="entry-container notification">
-                <span class="tag is-large" :class="{'is-danger' : (entry.type == 'expense'), 'is-success' : (entry.type == 'income')}">
+                <span class="entry-amount tag is-large" :class="{'is-danger' : (entry.type == 'expense'), 'is-success' : (entry.type == 'income')}">
                     {{ currency }} {{ entry.amount }}
                 </span>
-                <span>
+                <span class="entry-title">
                     {{ entry.title }}
                 </span>
-                <span class="tag is-primary is-medium">
+                <span class="entry-category tag is-primary is-medium">
                     {{ entry.category }}
+                </span>
+                <span>
+                    <a v-on:click="deleteEntry(entry._id)" class="delete"></a>
                 </span>
             </div>
         </section>

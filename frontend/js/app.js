@@ -66,7 +66,15 @@ let app = new Vue({
             }).then((res) => {
                 return res.json();
             }).then((success) => {
-                if (!success) console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
+                if (success) {
+                    for (let entry in this.entries) {
+                        if (this.entries[entry]["_id"] === id) {
+                            this.entries.splice(parseInt(entry), 1);
+                        }
+                    }
+                } else {
+                    console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
+                }
             });
         },
     }
