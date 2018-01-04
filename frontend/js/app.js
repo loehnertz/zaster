@@ -1,6 +1,7 @@
 // Constants
-const apiBaseEndpoint = 'http://localhost:3000/api';
-const apiEndpoints = {
+const CURRENCY = '€';
+const API_BASE_ENDPOINT = 'http://localhost:3000/api';
+const API_ENDPOINTS = {
     finances: '/finances',
     reports: '/reports',
 };
@@ -9,6 +10,7 @@ const apiEndpoints = {
 let app = new Vue({
     el: '#app',
     data: {
+        currency: CURRENCY,
         entries: [],
     },
     mounted() {
@@ -19,7 +21,7 @@ let app = new Vue({
             this.retrieveAllEntries();
         },
         retrieveAllEntries() {
-            fetch(apiBaseEndpoint + apiEndpoints.finances, {
+            fetch(API_BASE_ENDPOINT + API_ENDPOINTS.finances, {
                 method: 'GET',
             }).then((res) => {
                 return res.json();
@@ -29,7 +31,7 @@ let app = new Vue({
             });
         },
         createNewEntry() {
-            fetch(apiBaseEndpoint + apiEndpoints.finances, {
+            fetch(API_BASE_ENDPOINT + API_ENDPOINTS.finances, {
                 method: 'POST',
             }).then((res) => {
                 return res.json();
@@ -38,7 +40,7 @@ let app = new Vue({
             });
         },
         deleteEntry(id) {
-            fetch(`${apiBaseEndpoint}${apiEndpoints.finances}/${id}`, {
+            fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.finances}/${id}`, {
                 method: 'DELETE',
             }).then((res) => {
                 return res.json();

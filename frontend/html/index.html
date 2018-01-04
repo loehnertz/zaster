@@ -12,7 +12,7 @@
     <header>
         <h1>zaster</h1>
     </header>
-    <main>
+    <main class="container">
         <section id="overview" class="box">
             Überblick und Reports
         </section>
@@ -20,12 +20,19 @@
             Neuen Eintrag hinzufügen
         </section>
         <section id="list" class="box">
-            <div v-for="entry in entries">
-                {{ entry.type }}
-                {{ entry.amount }}
-                {{ entry.name }}
-                {{ entry.category }}
-                {{ entry.description }}
+            <div v-for="entry in entries" class="notification">
+                <span class="tag is-large" :class="{'is-danger' : (entry.type == 'expense') }">
+                    {{ currency }} {{ entry.amount }}
+                </span>
+                <span class="tag is-dark is-medium">
+                    {{ entry.name }}
+                </span>
+                <span class="tag is-primary is-medium">
+                    {{ entry.category }}
+                </span>
+                <div>
+                    {{ entry.description }}
+                </div>
             </div>
         </section>
     </main>
