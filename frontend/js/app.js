@@ -3,6 +3,7 @@ const CURRENCY = '€';
 const API_BASE_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     finances: '/finances',
+    financesChoices: '/finances/choices',
     reports: '/reports',
 };
 
@@ -11,14 +12,33 @@ let app = new Vue({
     el: '#app',
     data: {
         currency: CURRENCY,
+        choices: {},
         entries: [],
+        newEntry: {
+            amount: '',
+            name: '',
+            type: '',
+            category: '',
+            description: '',
+        }
     },
     mounted() {
         this.getInitialData();
     },
     methods: {
         getInitialData() {
+            this.retrieveChoices();
             this.retrieveAllEntries();
+        },
+        retrieveChoices() {
+            fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.financesChoices}`, {
+                method: 'GET',
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                this.choices = data;
+                console.log(this.choices);
+            });
         },
         retrieveAllEntries() {
             fetch(API_BASE_ENDPOINT + API_ENDPOINTS.finances, {
