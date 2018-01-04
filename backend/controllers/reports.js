@@ -14,9 +14,15 @@ module.exports = {
             Object.keys(reportTypes).includes(req.params["reportType"]) &&
             Object.keys(reportTypes[req.params["reportType"]]).includes(reportTarget)
         ) {
-            let report = {};
+            let report = {
+                label: reportTypes[reportType][reportTarget],
+                labels: [],
+                values: [],
+                data: {}
+            };
+
             for (let choice in Object.keys(choices[reportTarget])) {
-                report[Object.keys(choices[reportTarget])[choice]] = 0;
+                report["data"][Object.values(choices[reportTarget])[choice]] = 0;
             }
 
             Finances.find({}, (err, entries) => {
@@ -24,8 +30,16 @@ module.exports = {
                     res.send(err);
                 } else {
                     for (let entry in entries) {
-                        report[entries[entry][reportTarget]] += entries[entry]["amount"];
+                        report["data"][choices[reportTarget][entries[entry][reportTarget]]] += parseInt(entries[entry]["amount"]);
                     }
+
+                    let labels = Object.keys(report["data"]);
+                    for (let label in labels) {
+                        report["labels"].push(labels[label]);
+                        report["values"].push(report["data"][labels[label]]);
+                    }
+                    delete report["data"];
+
                     res.json(report);
                 }
             });
