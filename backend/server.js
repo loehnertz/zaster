@@ -23,7 +23,7 @@ app.use(Express.static(FRONTEND_PATH));
 app.use('/api', router);
 
 app.get('/', (req, res) => {
-    res.sendFile(Path.resolve(`${FRONTEND_PATH}/html/index.html`));
+    res.sendFile(Path.resolve(`${FRONTEND_PATH}/index.html`));
 });
 
 app.listen(3000, () => {
