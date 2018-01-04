@@ -25,6 +25,7 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.entries = data;
+                console.log(this.entries);
             });
         },
         createNewEntry() {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>zaster</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
@@ -13,17 +13,23 @@
         <h1>zaster</h1>
     </header>
     <main>
-        <section id="overview">
+        <section id="overview" class="box">
             Überblick und Reports
         </section>
-        <section id="add-entry">
+        <section id="add-entry" class="box">
             Neuen Eintrag hinzufügen
         </section>
-        <section id="list">
-            Liste aller Einträge
+        <section id="list" class="box">
+            <div v-for="entry in entries">
+                {{ entry.type }}
+                {{ entry.amount }}
+                {{ entry.name }}
+                {{ entry.category }}
+                {{ entry.description }}
+            </div>
         </section>
     </main>
 </div>
-<script src="./app.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>
