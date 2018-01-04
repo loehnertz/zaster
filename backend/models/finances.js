@@ -1,7 +1,7 @@
 const Mongoose = require('mongoose');
 
 
-const FinancesSchema = new Mongoose.Schema({
+module.exports = new Mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -10,21 +10,14 @@ const FinancesSchema = new Mongoose.Schema({
         type: String
     },
     category: {
-        type: [{
-            type: String,
-            enum: ['income', 'expense']
-        }]
+        type: String,
+        enum: ['income', 'expense']
     },
     recurring: {
         type: Boolean,
     },
     cycle: {
-        type: [{
-            type: String,
-            enum: ['daily', 'weekly', 'monthly', 'yearly']
-        }]
+        type: String,
+        enum: ['daily', 'weekly', 'monthly', 'yearly']
     },
 });
-
-
-module.exports = Mongoose.model('Finances', FinancesSchema);
