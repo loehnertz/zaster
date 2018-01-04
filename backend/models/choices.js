@@ -12,4 +12,8 @@ module.exports = {
         "clothing": "Kleidung",
         "pets": "Haustiere",
     },
+    reports: {
+        "distribution-types": "Verteilung: Arten",
+        "distribution-categories": "Verteilung: Kategorien",
+    },
 };

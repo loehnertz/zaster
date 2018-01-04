@@ -48,3 +48,9 @@ header {
 .entry-container > .entry-category {
     margin-right: 2rem;
 }
+
+#report-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

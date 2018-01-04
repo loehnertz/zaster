@@ -16,7 +16,15 @@
     </header>
     <main class="container">
         <section id="overview" class="box">
-            Überblick und Reports
+            <canvas id="chart" width="420" height="420"></canvas>
+            <div id="report-button-container" class="field is-grouped">
+                <button class="report-button button is-link"
+                        v-for="(value, key) in choices.reports"
+                        v-on:click="retrieveNewReportAndRenderChart(key)"
+                >
+                    {{ value }}
+                </button>
+            </div>
         </section>
         <section class="box">
             <div id="add-entry-container" class="field is-grouped">
@@ -32,7 +40,7 @@
                     </span>
                 </p>
                 <p class="control has-icons-left">
-                    <input v-model="newEntry.amount" id="new-entry-amount" class="stretched input" type="number" placeholder="Wert">
+                    <input v-model="newEntry.amount" id="new-entry-amount" class="stretched input" type="number" min="1" placeholder="Wert">
                     <span class="icon is-small is-left">
                         <i class="fa fa-euro-sign"></i>
                     </span>
@@ -61,13 +69,15 @@
         </section>
         <section id="list" class="box">
             <div v-for="entry in entries" class="entry-container notification">
-                <span class="entry-amount tag is-large" :class="{'is-danger' : (entry.type == 'expense'), 'is-success' : (entry.type == 'income')}">
+                <span class="entry-amount tag is-large"
+                      :class="{'is-danger' : (entry.type == 'expense'), 'is-success' : (entry.type == 'income')}"
+                >
                     {{ currency }} {{ entry.amount }}
                 </span>
                 <span class="entry-title">
                     {{ entry.title }}
                 </span>
-                <span class="entry-category tag is-primary is-medium">
+                <span class="entry-category tag is-dark is-medium">
                     {{ choices.categories[entry.category] }}
                 </span>
                 <span>
