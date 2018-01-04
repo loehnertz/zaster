@@ -61,21 +61,23 @@ let app = new Vue({
             });
         },
         deleteEntry(id) {
-            fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.finances}/${id}`, {
-                method: 'DELETE',
-            }).then((res) => {
-                return res.json();
-            }).then((success) => {
-                if (success) {
-                    for (let entry in this.entries) {
-                        if (this.entries[entry]["_id"] === id) {
-                            this.entries.splice(parseInt(entry), 1);
+            if (confirm('Soll der Eintrag wirklich gelöscht werden?')) {
+                fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.finances}/${id}`, {
+                    method: 'DELETE',
+                }).then((res) => {
+                    return res.json();
+                }).then((success) => {
+                    if (success) {
+                        for (let entry in this.entries) {
+                            if (this.entries[entry]["_id"] === id) {
+                                this.entries.splice(parseInt(entry), 1);
+                            }
                         }
+                    } else {
+                        console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
                     }
-                } else {
-                    console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
-                }
-            });
+                });
+            }
         },
     }
 });
