@@ -11,14 +11,17 @@ module.exports = {
         });
     },
     async createFinanceEntry(req, res) {
-        let entry = new Finances(req.body);
-        entry.save((err, entry) => {
+        let newEntry = new Finances(req.body);
+        newEntry.save((err, entry) => {
             if (err) res.send(err);
             res.json(entry);
         });
     },
     async getFinanceEntry(req, res) {
-        res.send('Get an entry!');
+        Finances.findById(req.params.id, (err, entry) => {
+            if (err) res.send(err);
+            res.json(entry);
+        });
     },
     async deleteFinanceEntry(req, res) {
         res.send('Delete an entry!');
