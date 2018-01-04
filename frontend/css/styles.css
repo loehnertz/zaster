@@ -16,3 +16,9 @@ h1 {
 #new-entry-title {
     flex: 3 !important;
 }
+
+.entry-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

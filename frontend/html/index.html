@@ -48,19 +48,16 @@
             </div>
         </section>
         <section id="list" class="box">
-            <div v-for="entry in entries" class="notification">
+            <div v-for="entry in entries" class="entry-container notification">
                 <span class="tag is-large" :class="{'is-danger' : (entry.type == 'expense') }">
                     {{ currency }} {{ entry.amount }}
                 </span>
-                <span class="tag is-dark is-medium">
+                <span>
                     {{ entry.title }}
                 </span>
                 <span class="tag is-primary is-medium">
                     {{ entry.category }}
                 </span>
-                <div>
-                    {{ entry.description }}
-                </div>
             </div>
         </section>
     </main>
