@@ -24,6 +24,9 @@ module.exports = {
         });
     },
     async deleteFinanceEntry(req, res) {
-        res.send('Delete an entry!');
+        Finances.remove({_id: req.params.id}, (err) => {
+            if (err) res.send(err);
+            res.json(true);
+        });
     },
 };
