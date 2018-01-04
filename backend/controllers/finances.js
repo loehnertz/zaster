@@ -1,11 +1,14 @@
 const Mongoose = require('mongoose');
 
-let Finances = Mongoose.model('Finances', require('../models/finances'));
+const Finances = Mongoose.model('Finances', require('../models/finances'));
 
 
 module.exports = {
     async getAllFinanceEntries(req, res) {
-        res.send('Get all entries!');
+        Finances.find({}, (err, entry) => {
+            if (err) res.send(err);
+            res.json(entry);
+        });
     },
     async createFinanceEntry(req, res) {
         let entry = new Finances(req.body);
