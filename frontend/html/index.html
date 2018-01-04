@@ -16,8 +16,10 @@
         <section id="overview" class="box">
             Überblick und Reports
         </section>
-        <section id="add-entry" class="box">
-            Neuen Eintrag hinzufügen
+        <section id="add-entry-container" class="box">
+            <select v-model="newEntry.category" title="Neuen Eintrag hinzufügen">
+                <option v-for="(value, key) in choices.categories" :value="key">{{ value }}</option>
+            </select>
         </section>
         <section id="list" class="box">
             <div v-for="entry in entries" class="notification">

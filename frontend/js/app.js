@@ -20,7 +20,7 @@ let app = new Vue({
             type: '',
             category: '',
             description: '',
-        }
+        },
     },
     mounted() {
         this.getInitialData();
@@ -37,7 +37,6 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.choices = data;
-                console.log(this.choices);
             });
         },
         retrieveAllEntries() {
