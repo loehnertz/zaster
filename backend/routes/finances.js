@@ -4,6 +4,9 @@ const app = Express();
 let finances = require('../controllers/finances');
 
 
+app.route('/choices')
+    .get(finances.getAllFinanceChoices);
+
 app.route('/')
     .get(finances.getAllFinanceEntries)
     .post(finances.createFinanceEntry);

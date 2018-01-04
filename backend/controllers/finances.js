@@ -29,4 +29,7 @@ module.exports = {
             res.json(true);
         });
     },
+    async getAllFinanceChoices(req, res) {
+        res.json(require('../models/choices'));
+    },
 };
