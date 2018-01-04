@@ -1,11 +1,11 @@
 // Constants
 const CURRENCY = '€';
-const DEFAULT_REPORT = 'distribution-category';
+const DEFAULT_REPORT = ['distribution', 'category'];
 const API_BASE_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     finances: '/finances',
     financesChoices: '/finances/choices',
-    reports: '/report',
+    reports: '/reports',
 };
 
 // Vue instance
@@ -13,6 +13,7 @@ let app = new Vue({
     el: '#app',
     data: {
         currency: CURRENCY,
+        chart: null,
         choices: {},
         entries: [],
         newEntry: {
@@ -27,8 +28,8 @@ let app = new Vue({
     },
     methods: {
         getInitialData() {
-            this.retrieveChoices();
             this.retrieveAllEntries();
+            this.retrieveChoices();
         },
         retrieveChoices() {
             fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.financesChoices}`, {
@@ -37,7 +38,18 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.choices = data;
-                this.retrieveNewReportAndRenderChart(DEFAULT_REPORT);
+                this.retrieveNewReportAndRenderChart(DEFAULT_REPORT[0], DEFAULT_REPORT[1]);
+            });
+        },
+        retrieveReport(endpoint) {
+            return new Promise((resolve, reject) => {
+                fetch(`${API_BASE_ENDPOINT}${API_ENDPOINTS.reports}${endpoint}`, {
+                    method: 'GET',
+                }).then((res) => {
+                    return res.json();
+                }).then((report) => {
+                    resolve(report);
+                });
             });
         },
         retrieveAllEntries() {
@@ -81,20 +93,20 @@ let app = new Vue({
                 });
             }
         },
-        retrieveNewReportAndRenderChart(report) {
-            this.retrieveReport(report).then((data) => {
+        retrieveNewReportAndRenderChart(reportType, reportTarget) {
+            this.retrieveReport(`/${reportType}/${reportTarget}`).then((report) => {
                 let colors = [];
-                for (let i = 0; i < data.labels.length; i++) {
+                for (let i = 0; i < report.labels.length; i++) {
                     colors.push(this.generateRandomColor());
                 }
 
                 this.renderChart(
                     'doughnut',
                     {
-                        labels: data.labels,
+                        labels: report.labels,
                         datasets: [{
-                            label: data.label,
-                            data: data.values,
+                            label: report.label,
+                            data: report.values,
                             backgroundColor: colors,
                         }]
                     },
@@ -104,17 +116,9 @@ let app = new Vue({
                 );
             });
         },
-        retrieveReport() {
-            return new Promise((resolve, reject) => {
-                resolve({
-                    label: 'Verteilung auf die Kategorien',
-                    labels: Object.values(this.choices.category),
-                    values: [1, 2, 3, 4, 5, 6, 7],
-                });
-            });
-        },
         renderChart(type, data, options) {
-            new Chart(document.getElementById("chart"), {
+            if (this.chart) this.chart.destroy();
+            this.chart = new Chart(document.getElementById('chart'), {
                 type: type,
                 data: data,
                 options: options,

@@ -15,6 +15,10 @@ header {
     width: 5rem;
 }
 
+#app {
+    margin-bottom: 2rem;
+}
+
 .stretched {
     width: 100%;
 }

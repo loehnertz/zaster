@@ -20,10 +20,10 @@
             <div id="chart-container">
                 <canvas id="chart" width="420" height="420"></canvas>
             </div>
-            <div id="report-button-container" class="field is-grouped">
-                <button class="report-button button is-link"
-                        v-for="(value, key) in choices.reports"
-                        v-on:click="retrieveNewReportAndRenderChart(key)"
+            <div id="report-button-container" class="field is-grouped" v-for="(label, reportType) in choices.report">
+                <button class="button is-link"
+                        v-for="(value, reportTarget) in label"
+                        v-on:click="retrieveNewReportAndRenderChart(reportType, reportTarget)"
                 >
                     {{ value }}
                 </button>
@@ -35,7 +35,7 @@
                     <span class="stretched select">
                         <select v-model="newEntry.type" class="stretched" title="Art wählen">
                             <option disabled selected value="">Art</option>
-                            <option v-for="(value, key) in choices.types" :value="key">{{ value }}</option>
+                            <option v-for="(value, key) in choices.type" :value="key">{{ value }}</option>
                         </select>
                     </span>
                     <span class="icon is-small is-left">
@@ -43,7 +43,8 @@
                     </span>
                 </p>
                 <p class="control has-icons-left">
-                    <input v-model="newEntry.amount" id="new-entry-amount" class="stretched input" type="number" min="1" placeholder="Wert">
+                    <input v-model="newEntry.amount" id="new-entry-amount" class="stretched input" type="number" min="1"
+                           placeholder="Wert">
                     <span class="icon is-small is-left">
                         <i class="fa fa-euro-sign"></i>
                     </span>
@@ -58,7 +59,7 @@
                     <span class="stretched select">
                         <select v-model="newEntry.category" class="stretched" title="Kategorie wählen">
                             <option disabled selected value="">Kategorie</option>
-                            <option v-for="(value, key) in choices.categories" :value="key">{{ value }}</option>
+                            <option v-for="(value, key) in choices.category" :value="key">{{ value }}</option>
                         </select>
                     </span>
                     <span class="icon is-small is-left">
@@ -81,7 +82,7 @@
                     {{ entry.title }}
                 </span>
                 <span class="entry-category tag is-dark is-medium">
-                    {{ choices.categories[entry.category] }}
+                    {{ choices.category[entry.category] }}
                 </span>
                 <span>
                     <a v-on:click="deleteEntry(entry._id)" class="delete"></a>
