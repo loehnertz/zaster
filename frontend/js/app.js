@@ -1,11 +1,11 @@
 // Constants
 const CURRENCY = '€';
-const DEFAULT_REPORT = 'distribution-categories';
+const DEFAULT_REPORT = 'distribution-category';
 const API_BASE_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     finances: '/finances',
     financesChoices: '/finances/choices',
-    reports: '/reports',
+    reports: '/report',
 };
 
 // Vue instance
@@ -108,7 +108,7 @@ let app = new Vue({
             return new Promise((resolve, reject) => {
                 resolve({
                     label: 'Verteilung auf die Kategorien',
-                    labels: Object.values(this.choices.categories),
+                    labels: Object.values(this.choices.category),
                     values: [1, 2, 3, 4, 5, 6, 7],
                 });
             });

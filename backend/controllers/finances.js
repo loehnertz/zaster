@@ -5,9 +5,9 @@ const Finances = Mongoose.model('Finances', require('../models/finances'));
 
 module.exports = {
     async getAllFinanceEntries(req, res) {
-        Finances.find({}, (err, entry) => {
+        Finances.find({}, (err, entries) => {
             if (err) res.send(err);
-            res.json(entry);
+            res.json(entries);
         });
     },
     async createFinanceEntry(req, res) {

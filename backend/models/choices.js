@@ -1,9 +1,9 @@
 module.exports = {
-    types: {
+    type: {
         "income": "Einnahmen",
         "expense": "Ausgaben",
     },
-    categories: {
+    category: {
         "rent": "Miete",
         "salary": "Gehalt",
         "food": "Lebensmittel",
@@ -12,8 +12,10 @@ module.exports = {
         "clothing": "Kleidung",
         "pets": "Haustiere",
     },
-    reports: {
-        "distribution-types": "Verteilung: Arten",
-        "distribution-categories": "Verteilung: Kategorien",
-    },
+    report: {
+        "distribution": {
+            "type": "Verteilung: Arten",
+            "category": "Verteilung: Kategorien"
+        }
+    }
 };
