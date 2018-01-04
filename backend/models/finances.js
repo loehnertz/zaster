@@ -1,7 +1,7 @@
 const Mongoose = require('mongoose');
 
 
-module.exports = new Mongoose.Schema({
+const FinancesSchema = new Mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -21,3 +21,6 @@ module.exports = new Mongoose.Schema({
         enum: ['daily', 'weekly', 'monthly', 'yearly']
     },
 });
+
+
+module.exports = FinancesSchema;
