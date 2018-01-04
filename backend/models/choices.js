@@ -1,15 +1,15 @@
 module.exports = {
-    types: [
-        "income",
-        "expense",
-    ],
-    categories: [
-        "food",
-        "electronics",
-        "drugs",
-        "pets",
-        "rent",
-        "salary",
-        "clothing",
-    ],
+    types: {
+        "income": "Einnahmen",
+        "expense": "Ausgaben",
+    },
+    categories: {
+        "rent": "Miete",
+        "salary": "Gehalt",
+        "food": "Lebensmittel",
+        "electronics": "Elektronik",
+        "drugs": "Drogerie",
+        "clothing": "Kleidung",
+        "pets": "Haustiere",
+    },
 };

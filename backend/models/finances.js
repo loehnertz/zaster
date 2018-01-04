@@ -17,11 +17,11 @@ const FinancesSchema = new Mongoose.Schema({
     },
     type: {
         type: String,
-        enum: choices.types
+        enum: Object.keys(choices.types)
     },
     category: {
         type: String,
-        enum: choices.categories
+        enum: Object.keys(choices.categories)
     },
     recurring: {
         type: Boolean,
