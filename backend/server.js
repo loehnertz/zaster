@@ -1,3 +1,4 @@
+const Path = require('path');
 const Express = require('express');
 const BodyParser = require('body-parser');
 const Mongoose = require('mongoose');
@@ -22,7 +23,7 @@ app.use(Express.static(FRONTEND_PATH));
 app.use('/api', router);
 
 app.get('/', (req, res) => {
-    res.sendFile(`${FRONTEND_PATH}/index.html`);
+    res.sendFile(Path.resolve(`${FRONTEND_PATH}/html/index.html`));
 });
 
 app.listen(3000, () => {
