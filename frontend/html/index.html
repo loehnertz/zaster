@@ -60,7 +60,7 @@
         </section>
         <section id="list" class="box">
             <div v-for="entry in entries" class="entry-container notification">
-                <span class="tag is-large" :class="{'is-danger' : (entry.type == 'expense') }">
+                <span class="tag is-large" :class="{'is-danger' : (entry.type == 'expense'), 'is-success' : (entry.type == 'income')}">
                     {{ currency }} {{ entry.amount }}
                 </span>
                 <span>
