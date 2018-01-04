@@ -26,6 +26,15 @@ let app = new Vue({
             }).then((data) => {
                 this.entries = data;
             });
-        }
+        },
+        createNewEntry() {
+            fetch(apiBaseEndpoint + apiEndpoints.finances, {
+                method: 'POST',
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                this.entries.unshift(data);
+            });
+        },
     }
 });
