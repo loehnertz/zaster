@@ -9,9 +9,23 @@ const apiEndpoints = {
 let app = new Vue({
     el: '#app',
     data: {
-
+        entries: [],
+    },
+    mounted() {
+        this.getInitialData();
     },
     methods: {
-
+        getInitialData() {
+            this.retrieveAllEntries();
+        },
+        retrieveAllEntries() {
+            fetch(apiBaseEndpoint + apiEndpoints.finances, {
+                method: 'GET',
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                this.entries = data;
+            });
+        }
     }
 });
