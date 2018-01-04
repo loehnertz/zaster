@@ -1,7 +1,13 @@
 const Mongoose = require('mongoose');
 
+const choices = require('./choices');
+
 
 const FinancesSchema = new Mongoose.Schema({
+    amount: {
+        type: Number,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -9,9 +15,13 @@ const FinancesSchema = new Mongoose.Schema({
     description: {
         type: String
     },
+    type: {
+        type: String,
+        enum: choices.types
+    },
     category: {
         type: String,
-        enum: ['income', 'expense']
+        enum: choices.categories
     },
     recurring: {
         type: Boolean,
