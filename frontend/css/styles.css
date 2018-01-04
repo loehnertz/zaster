@@ -49,8 +49,15 @@ header {
     margin-right: 2rem;
 }
 
+#chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #report-button-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 2rem 0;
 }

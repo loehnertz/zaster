@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>zaster</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.bundle.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -16,7 +17,9 @@
     </header>
     <main class="container">
         <section id="overview" class="box">
-            <canvas id="chart" width="420" height="420"></canvas>
+            <div id="chart-container">
+                <canvas id="chart" width="420" height="420"></canvas>
+            </div>
             <div id="report-button-container" class="field is-grouped">
                 <button class="report-button button is-link"
                         v-for="(value, key) in choices.reports"

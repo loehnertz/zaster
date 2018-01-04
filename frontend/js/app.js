@@ -1,5 +1,6 @@
 // Constants
 const CURRENCY = '€';
+const DEFAULT_REPORT = 'distribution-categories';
 const API_BASE_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     finances: '/finances',
@@ -36,6 +37,7 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.choices = data;
+                this.retrieveNewReportAndRenderChart(DEFAULT_REPORT);
             });
         },
         retrieveAllEntries() {
@@ -78,6 +80,39 @@ let app = new Vue({
                     }
                 });
             }
+        },
+        retrieveNewReportAndRenderChart(report) {
+            this.retrieveReport(report).then((data) => {
+                this.renderChart(
+                    'doughnut',
+                    {
+                        labels: data.labels,
+                        datasets: [{
+                            label: data.label,
+                            data: data.values,
+                        }]
+                    },
+                    {
+                        responsive: false,
+                    },
+                );
+            });
+        },
+        retrieveReport() {
+            return new Promise((resolve, reject) => {
+                resolve({
+                    label: 'Verteilung auf die Kategorien',
+                    labels: Object.values(this.choices.categories),
+                    values: [1, 2, 3, 4, 5, 6, 7],
+                });
+            });
+        },
+        renderChart(type, data, options) {
+            new Chart(document.getElementById("chart"), {
+                type: type,
+                data: data,
+                options: options,
+            });
         },
     }
 });
