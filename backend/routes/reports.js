@@ -4,7 +4,8 @@ const app = Express();
 let reports = require('../controllers/reports');
 
 
-app.route('/').get(reports);
+app.route('/:reportType')
+    .get(reports.calculateReport);
 
 
 module.exports = app;
