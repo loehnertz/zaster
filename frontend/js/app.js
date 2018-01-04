@@ -1,6 +1,6 @@
 // Constants
 const CURRENCY = '€';
-const DEFAULT_REPORT = ['distribution', 'category'];
+const DEFAULT_REPORT = ['distribution', 'type'];
 const API_BASE_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINTS = {
     finances: '/finances',
@@ -72,6 +72,7 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.entries.unshift(data);
+                this.retrieveNewReportAndRenderChart(DEFAULT_REPORT[0], DEFAULT_REPORT[1]);
             });
         },
         deleteEntry(id) {
@@ -87,6 +88,7 @@ let app = new Vue({
                                 this.entries.splice(parseInt(entry), 1);
                             }
                         }
+                        this.retrieveNewReportAndRenderChart(DEFAULT_REPORT[0], DEFAULT_REPORT[1]);
                     } else {
                         console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
                     }
