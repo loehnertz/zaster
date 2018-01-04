@@ -8,7 +8,7 @@ const FinancesSchema = new Mongoose.Schema({
         type: Number,
         required: true
     },
-    name: {
+    title: {
         type: String,
         required: true
     },
