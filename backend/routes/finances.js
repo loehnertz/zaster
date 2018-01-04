@@ -3,14 +3,19 @@ const Express = require('express');
 const app = Express();
 
 
-app.route('/finances/:id')
+app.route('/')
     .get((req, res) => {
-        res.send('Get an entry');
+        res.send('Get all entries');
     })
     .post((req, res) => {
         res.send('Add an entry');
+    });
+
+app.route('/:id')
+    .get((req, res) => {
+        res.send('Get an entry');
     })
-    .put((req, res) => {
+    .delete((req, res) => {
         res.send('Update an entry');
     });
 
