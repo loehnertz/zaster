@@ -44,7 +44,7 @@ let app = new Vue({
             }).then((res) => {
                 return res.json();
             }).then((data) => {
-                this.entries = data;
+                this.entries = data.reverse();
             });
         },
         createNewEntry() {
