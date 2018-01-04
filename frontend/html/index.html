@@ -67,7 +67,7 @@
                     {{ entry.title }}
                 </span>
                 <span class="entry-category tag is-primary is-medium">
-                    {{ entry.category }}
+                    {{ choices.categories[entry.category] }}
                 </span>
                 <span>
                     <a v-on:click="deleteEntry(entry._id)" class="delete"></a>
