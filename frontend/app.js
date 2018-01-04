@@ -36,5 +36,14 @@ let app = new Vue({
                 this.entries.unshift(data);
             });
         },
+        deleteEntry(id) {
+            fetch(`${apiBaseEndpoint}${apiEndpoints.finances}/${id}`, {
+                method: 'DELETE',
+            }).then((res) => {
+                return res.json();
+            }).then((success) => {
+                if (!success) console.error(`DELETE-Request of ID "${id}" wasn't successful!`);
+            });
+        },
     }
 });
