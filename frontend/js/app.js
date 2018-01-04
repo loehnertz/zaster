@@ -83,6 +83,11 @@ let app = new Vue({
         },
         retrieveNewReportAndRenderChart(report) {
             this.retrieveReport(report).then((data) => {
+                let colors = [];
+                for (let i = 0; i < data.labels.length; i++) {
+                    colors.push(this.generateRandomColor());
+                }
+
                 this.renderChart(
                     'doughnut',
                     {
@@ -90,6 +95,7 @@ let app = new Vue({
                         datasets: [{
                             label: data.label,
                             data: data.values,
+                            backgroundColor: colors,
                         }]
                     },
                     {
@@ -114,5 +120,8 @@ let app = new Vue({
                 options: options,
             });
         },
+        generateRandomColor() {
+            return ('#' + (Math.random() * 0xFFFFFF << 0).toString(16));
+        }
     }
 });
