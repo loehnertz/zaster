@@ -4,3 +4,15 @@ h1 {
     text-align: center;
     margin: 1rem 0;
 }
+
+.stretched {
+    width: 100%;
+}
+
+#add-entry-container > .control {
+    flex: 1;
+}
+
+#new-entry-title {
+    flex: 3 !important;
+}

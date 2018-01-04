@@ -16,7 +16,7 @@ let app = new Vue({
         entries: [],
         newEntry: {
             amount: '',
-            name: '',
+            title: '',
             type: '',
             category: '',
             description: '',
@@ -46,7 +46,6 @@ let app = new Vue({
                 return res.json();
             }).then((data) => {
                 this.entries = data;
-                console.log(this.entries);
             });
         },
         createNewEntry() {

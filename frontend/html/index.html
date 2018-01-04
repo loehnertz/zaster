@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>zaster</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.css">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -16,10 +17,35 @@
         <section id="overview" class="box">
             Überblick und Reports
         </section>
-        <section id="add-entry-container" class="box">
-            <select v-model="newEntry.category" title="Neuen Eintrag hinzufügen">
-                <option v-for="(value, key) in choices.categories" :value="key">{{ value }}</option>
-            </select>
+        <section class="box">
+            <div id="add-entry-container" class="field is-grouped">
+                <p class="control has-icons-left">
+                    <input id="new-entry-amount" class="stretched input" type="number" placeholder="Wert">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-euro-sign"></i>
+                    </span>
+                </p>
+                <p id="new-entry-title" class="control has-icons-left">
+                    <input class="stretched input" type="text" placeholder="Name">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-quote-right"></i>
+                    </span>
+                </p>
+                <p class="control has-icons-left">
+                    <span class="stretched select">
+                        <select class="stretched" v-model="newEntry.category" title="Neuen Eintrag hinzufügen">
+                            <option disabled selected value="">Kategorie</option>
+                            <option v-for="(value, key) in choices.categories" :value="key">{{ value }}</option>
+                        </select>
+                    </span>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-list"></i>
+                    </span>
+                </p>
+                <div class="control">
+                    <button class="stretched button is-primary">Absenden</button>
+                </div>
+            </div>
         </section>
         <section id="list" class="box">
             <div v-for="entry in entries" class="notification">
@@ -27,7 +53,7 @@
                     {{ currency }} {{ entry.amount }}
                 </span>
                 <span class="tag is-dark is-medium">
-                    {{ entry.name }}
+                    {{ entry.title }}
                 </span>
                 <span class="tag is-primary is-medium">
                     {{ entry.category }}
