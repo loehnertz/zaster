@@ -19,21 +19,32 @@
         </section>
         <section class="box">
             <div id="add-entry-container" class="field is-grouped">
+                <p id="new-entry-type" class="control has-icons-left">
+                    <span class="stretched select">
+                        <select v-model="newEntry.type" class="stretched" title="Art wählen">
+                            <option disabled selected value="">Art</option>
+                            <option v-for="(value, key) in choices.types" :value="key">{{ value }}</option>
+                        </select>
+                    </span>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-info-circle"></i>
+                    </span>
+                </p>
                 <p class="control has-icons-left">
-                    <input id="new-entry-amount" class="stretched input" type="number" placeholder="Wert">
+                    <input v-model="newEntry.amount" id="new-entry-amount" class="stretched input" type="number" placeholder="Wert">
                     <span class="icon is-small is-left">
                         <i class="fa fa-euro-sign"></i>
                     </span>
                 </p>
                 <p id="new-entry-title" class="control has-icons-left">
-                    <input class="stretched input" type="text" placeholder="Name">
+                    <input v-model="newEntry.title" class="stretched input" type="text" placeholder="Name">
                     <span class="icon is-small is-left">
                         <i class="fa fa-quote-right"></i>
                     </span>
                 </p>
                 <p class="control has-icons-left">
                     <span class="stretched select">
-                        <select class="stretched" v-model="newEntry.category" title="Neuen Eintrag hinzufügen">
+                        <select v-model="newEntry.category" class="stretched" title="Kategorie wählen">
                             <option disabled selected value="">Kategorie</option>
                             <option v-for="(value, key) in choices.categories" :value="key">{{ value }}</option>
                         </select>
@@ -43,7 +54,7 @@
                     </span>
                 </p>
                 <div class="control">
-                    <button class="stretched button is-primary">Absenden</button>
+                    <button v-on:click="createNewEntry" class="stretched button is-primary">Absenden</button>
                 </div>
             </div>
         </section>

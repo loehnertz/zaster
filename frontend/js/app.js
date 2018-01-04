@@ -19,7 +19,6 @@ let app = new Vue({
             title: '',
             type: '',
             category: '',
-            description: '',
         },
     },
     mounted() {
@@ -51,6 +50,10 @@ let app = new Vue({
         createNewEntry() {
             fetch(API_BASE_ENDPOINT + API_ENDPOINTS.finances, {
                 method: 'POST',
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify(this.newEntry),
             }).then((res) => {
                 return res.json();
             }).then((data) => {

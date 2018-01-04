@@ -13,6 +13,10 @@ h1 {
     flex: 1;
 }
 
+#new-entry-type {
+    flex: 1.25 !important;
+}
+
 #new-entry-title {
     flex: 3 !important;
 }
