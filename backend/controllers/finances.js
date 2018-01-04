@@ -8,7 +8,11 @@ module.exports = {
         res.send('Get all entries!');
     },
     async createFinanceEntry(req, res) {
-        res.send('Create an entry!');
+        let entry = new Finances(req.body);
+        entry.save((err, entry) => {
+            if (err) res.send(err);
+            res.json(entry);
+        });
     },
     async getFinanceEntry(req, res) {
         res.send('Get an entry!');
