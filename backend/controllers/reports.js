@@ -6,7 +6,7 @@ const reportTypes = require('../models/choices').report;
 
 
 module.exports = {
-    async calculateReport(req, res) {
+    calculateReport(req, res) {
         let reportType = req.params["reportType"];
         let reportTarget = req.params["reportTarget"];
 
