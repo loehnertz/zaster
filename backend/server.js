@@ -26,6 +26,6 @@ app.get('/', (req, res) => {
     res.sendFile(Path.resolve(`${FRONTEND_PATH}/index.html`));
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}!`);
 });
